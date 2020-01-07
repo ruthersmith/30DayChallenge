@@ -1,0 +1,13 @@
+
+html {
+  height: 100%;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(rgb(61,152,202),rgb(128,195,215),rgb(158,204,219));
+}
+
+a {
+  color: #00B7FF;
+}
