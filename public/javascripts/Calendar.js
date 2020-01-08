@@ -30,7 +30,7 @@ class Calendar{
         for (let i = 0; day_count <= this.maxDays; i++){
             let column2 = true;
 
-            if(i % 7 == 0 || i  % 7 == 1){
+            if(i % 7 == 0 || i  % 7 == 6){
                 column2 = false;
             }
 
@@ -42,10 +42,10 @@ class Calendar{
             }
         }
     }
-    
+
     appendCalenderCell(value, column2 = false, style = "' style = '' "){
-        let openingDiv1 = "<div class = 'col-md-1  text-right" + style;
-        let openingDiv2 = "<div class = 'col-md-2  text-right" + style ;
+        let openingDiv1 = "<div class = 'col-md-1  text-right" + style ;
+        let openingDiv2 = "<div class = 'col-md-2  text-right" + style;
 
         if(column2){
             this.calendarDiv.append(openingDiv2 +"' > "+ value + "</div>");
