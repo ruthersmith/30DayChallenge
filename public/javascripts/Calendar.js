@@ -13,30 +13,33 @@ class Calendar{
 
         this.displayDayTitle();
         this.displayDays();
+        
     }
 
     displayDayTitle(){
-      for(let col = 0; col < 7; col++){
-        this.calendarDiv.append("<div>" + this.getKeyByValue(this.days,col) + "</div>");
-      }
-      this.calendarDiv.append("<div class=\"end\"></div>");
+        this.appendCalenderCell( this.getKeyByValue(this.days,0) )
+        for(let col = 1; col < 6; col++){
+            this.appendCalenderCell(this.getKeyByValue(this.days,col),"<div class = 'col-md-2 calendar-cell" );
+        }
+        this.appendCalenderCell( this.getKeyByValue(this.days,6) )
     }
 
     displayDays(){
         let day_count = 1;
+        let openingDiv = "<div class = 'col-md-1 calendar-cell' " ;
         for (let i = 0; day_count <= this.maxDays; i++){
 
-          if (i <= this.firstDay){
-            this.calendarDiv.append("<div style='visibility: hidden; '>" + '.' + "</div>");
+          if (i < this.firstDay){
+            // visibility: hidden;
+            this.calendarDiv.append(openingDiv + "style=' '>" + '.' + "</div>");
           }else {
-            this.calendarDiv.append("<div> "+ day_count + "</div>");
+            this.calendarDiv.append("<div class = 'col-md-1 calendar-cell'> "+ day_count + "</div>");
             day_count++;
           }
-
-          if (i % 7 === 0){
-            this.calendarDiv.append("<div class=\"end\"></div>");
-          }
         }
+    }
+    appendCalenderCell(value,openingDiv = "<div class = 'col-md-1 calendar-cell" ){
+        this.calendarDiv.append(openingDiv +"' > "+ value + "</div>");
     }
 
      getKeyByValue(object, value) {

@@ -12,9 +12,13 @@ a {
   color: #00B7FF;
 }
 
+.calendar-cell {
+  float:left; 
+  padding-left: 5px;
+}
+
     /* will make all text from error tag red */
     error {color: red;}
-    /* will have same width for all divs so that calendar aligns properly */
-    calendar > div {float:left; width:80px;}
+
     /* this will allow div tag to move to next line (no floating to left) */
     .end{clear:both;}
