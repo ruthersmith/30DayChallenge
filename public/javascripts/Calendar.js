@@ -3,17 +3,23 @@ class Calendar{
     days =  {
         "Sunday": 0, "Monday": 1, "Tuesday": 2,
         "Wednesday": 3,"Thursday": 4,"Friday": 5,"Saturday":6
-      }
+      };
+
+    monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
     constructor(){
-        this.year = 2019;
-        this.month = 'Oct';
-        this.firstDay = 2;
-        this.maxDays = 31;
         this.calendarDiv = $("#calendar");
 
+        this.setTodayDate();
         this.displayDayTitle();
         this.displayDays();
-        
+        this.displayCalendarHeading();
+    }
+
+    displayCalendarHeading(){
+        $('#heading').append(`<div>${this.month} ${this.year} </div>`)
     }
 
     displayDayTitle(){
@@ -35,7 +41,7 @@ class Calendar{
             }
 
             if (i < this.firstDay){
-                this.appendCalenderCell(".",column2, "' style =  'visibility: hidden'");
+                this.appendCalenderCell(".",column2, "' style =  'color: #ddd'");
              }else {
                 this.appendCalenderCell(day_count,column2);
                 day_count++;
@@ -44,8 +50,8 @@ class Calendar{
     }
 
     appendCalenderCell(value, column2 = false, style = "' style = '' "){
-        let openingDiv1 = "<div class = 'col-md-1  text-right" + style ;
-        let openingDiv2 = "<div class = 'col-md-2  text-right" + style;
+        let openingDiv1 = "<div class = 'col-md-1 p-3 days text-right" + style ;
+        let openingDiv2 = "<div class = 'col-md-2 days text-right" + style;
 
         if(column2){
             this.calendarDiv.append(openingDiv2 +"' > "+ value + "</div>");
@@ -56,5 +62,21 @@ class Calendar{
 
      getKeyByValue(object, value) {
         return Object.keys(object).find(key => object[key] === value);
+    }
+
+
+     setTodayDate(date = new Date()){
+        this.today  = date.getDate();
+        this.month = this.monthNames[date.getMonth()];
+        this.year = date.getFullYear();
+        this.getMonthSetting(this.year,date.getMonth());
+    }
+    
+    getMonthSetting(year = this.year, month = this.month){
+        let tempDate = new Date(year,month,0);
+        this.maxDays = tempDate.getDate();
+        this.firstDay = tempDate.getDay();;
+
+        console.log("max xdays " + tempDate.getDate());
     }
 }

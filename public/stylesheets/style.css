@@ -12,6 +12,15 @@ a {
   color: #00B7FF;
 }
 
+calendar{
+  height: 80vh;
+  background-color:#ddd;
+}
+
+.days{
+  border: solid 1px #eee;
+}
+
 
     /* will make all text from error tag red */
     error {color: red;}
